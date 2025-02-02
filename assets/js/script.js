@@ -19,6 +19,7 @@ function onAddButtonClick() {
 
     existingTasks.push(textContent);
     todoParentEl.appendChild(createTodoElement(textContent, function(obj) {
+        existingTasks = existingTasks.filter(item => item !== obj.children[0].textContent);
         todoParentEl.removeChild(obj);
     }));
 
@@ -103,7 +104,7 @@ const ALLOW_EDITING_COMPLETED = false;
 const addItemTextEl = document.getElementById("add-item-text");
 const addItemButtonEl = document.getElementById("add-item-button");
 const todoParentEl = document.querySelector("main section");
-const existingTasks = [];
+let existingTasks = [];
 
 
 addItemTextEl.addEventListener("change", onAddButtonClick);
